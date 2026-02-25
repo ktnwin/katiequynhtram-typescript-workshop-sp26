@@ -1,21 +1,43 @@
 <script lang="ts">
-    import Todo from "./todo.svelte"
+    import {Todo} from "./todo";
+    let todolist: Todo[] = [];
+    let index = 0
+    function addTodo() {
+        let inputText = document.getElementById("newtodotext") as HTMLInputElement;
+        if (inputText.value == "") {
+            return;
+        }
+        let newTodo = new Todo(inputText.value, index);
+        todolist = [...todolist, newTodo];
+        index += 1;
+        inputText.value = "";
+    }
+    function removeTodo(index: number) {
+        todolist.splice(index, 1);
+        todolist = [...todolist];
+    }
 </script>
 
 
 <div class="newtodo">
-    <form action="/action_page.php">
         <input type="text" id="newtodotext" name="paragraph_text" placeholder="Do homework...">
         <hr>
-        <input type="submit" id="newtodosubmit" name="newtodosubmit" value="+">
-    </form>
+        <button id="newtodosubmit" onclick={() => addTodo()}>+</button>
 </div>
 
 <div class="header">
     <h1>To Do:</h1>
 </div>
 
-<!-- todos -->
+{#each todolist as todo}
+    <div class="todo">
+        <section>
+            <h2>{todo.getTitle()}</h2>
+            <h4>{todo.getIndex()}</h4>
+        </section>
+        <button id="todoremove" onclick={() => removeTodo(todo.getIndex())}>X</button>
+    </div>
+{/each}
 
 <style>
     :global(*) {
@@ -25,6 +47,26 @@
         color: white;
         box-sizing: border-box;
   	}
+    .todo {
+        margin-bottom: 5vh;
+        padding: 2vh;
+        width: 50%;
+        border: 2px solid white;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: row;
+    }
+    .todo section {
+       flex-grow: 10;
+    }
+    #todoremove {
+        padding: 12px;
+        border-radius: 5px;
+        color: black;
+        background-color: red;
+        font-size: large;
+        flex-grow: 0.1;
+    }
     .newtodo {
         margin-top: 20vh;
         margin-bottom: 10vh;
@@ -33,10 +75,6 @@
         border: 2px solid white;
         border-radius: 10px;
     }
-    .newtodo form {
-        display: flex;
-        flex-direction: column;
-    }
     input {
         border-width: 0px;
     }
@@ -44,7 +82,6 @@
         width: 100%;
         min-height: 20%;
         padding: 12px;
-        box-sizing: border-box;
         display: inline-block;
         font-size: large;
     }
