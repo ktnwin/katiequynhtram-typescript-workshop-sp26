@@ -1,41 +1,34 @@
 <script lang="ts">
-    import {Todo} from "./todo";
-    let todolist: Todo[] = [];
-    let index = 0
-    function addTodo() {
-        let inputText = document.getElementById("newtodotext") as HTMLInputElement;
-        if (inputText.value == "") {
-            return;
-        }
-        let newTodo = new Todo(inputText.value, index);
-        todolist = [...todolist, newTodo];
-        index += 1;
-        inputText.value = "";
-    }
-    function removeTodo(index: number) {
-        todolist.splice(index, 1);
-        todolist = [...todolist];
-    }
+    // import Todo class from todo.ts
+    
+    // make array of Todos
+
+    // make add Todo function that grabs the text input,
+    // increases the index, and pushes a new Todo to the array
+    
+    // make remove Todo function that takes an index
+    // and splices the array at that index
+    
 </script>
 
 
 <div class="newtodo">
     <input type="text" id="newtodotext" name="paragraph_text" placeholder="Do homework...">
     <hr>
-    <button id="newtodosubmit" onclick={() => addTodo()}>+</button>
+    <button id="newtodosubmit" onclick={}><!-- call add Todo -->+</button>
 </div>
 
 <div class="header">
     <h1>To Do:</h1>
 </div>
 
-{#each todolist as todo}
+{#each _ as todo}<!-- use todo array -->
     <div class="todo">
         <section>
-            <h2>{todo.getTitle()}</h2>
-            <h4>ID: {todo.getIndex()}</h4>
+            <h2>{}<!-- get title --></h2>
+            <h4>ID: {}<!-- get index --></h4>
         </section>
-        <button id="todoremove" onclick={() => removeTodo(todo.getIndex())}>X</button>
+        <button id="todoremove" onclick={}><!-- call remove Todo using index -->X</button>
     </div>
 {/each}
 
