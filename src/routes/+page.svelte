@@ -20,9 +20,9 @@
 
 
 <div class="newtodo">
-        <input type="text" id="newtodotext" name="paragraph_text" placeholder="Do homework...">
-        <hr>
-        <button id="newtodosubmit" onclick={() => addTodo()}>+</button>
+    <input type="text" id="newtodotext" name="paragraph_text" placeholder="Do homework...">
+    <hr>
+    <button id="newtodosubmit" onclick={() => addTodo()}>+</button>
 </div>
 
 <div class="header">
@@ -33,7 +33,7 @@
     <div class="todo">
         <section>
             <h2>{todo.getTitle()}</h2>
-            <h4>{todo.getIndex()}</h4>
+            <h4>ID: {todo.getIndex()}</h4>
         </section>
         <button id="todoremove" onclick={() => removeTodo(todo.getIndex())}>X</button>
     </div>
