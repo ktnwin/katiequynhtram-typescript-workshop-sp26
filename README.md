@@ -1,22 +1,8 @@
-# sv
+# Installing node.js
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+Before you can run this workshop, you need to install node.js here: https://nodejs.org/en/download
 
-## Creating a project
-
-If you're seeing this, you've probably already done this step. Congrats!
-
-```sh
-# create a new project
-npx sv create my-app
-```
-
-To recreate this project with the same configuration:
-
-```sh
-# recreate this project
-npx sv create --template minimal --types ts --add prettier --install npm ./
-```
+For Windows or macOS, we recommend installing a prebuilt installer; for Linux, we recommend using `nvm` to install node.js
 
 ## Developing
 
@@ -29,14 +15,3 @@ npm run dev
 npm run dev -- --open
 ```
 
-## Building
-
-To create a production version of your app:
-
-```sh
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
