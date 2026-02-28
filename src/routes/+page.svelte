@@ -1,34 +1,50 @@
 <script lang="ts">
     // import Todo class from todo.ts
-    
-    // make array of Todos
+    import{Todo} from "./todo"
 
+    // make array of Todos
+    let todolist: Todo[] = [];
+    let index = 0;
+    
     // make add Todo function that grabs the text input,
     // increases the index, and pushes a new Todo to the array
+    function addTodo(){
+        let inputText = document.getElementById("newtodotext") as HTMLInputElement;
+        if (inputText.value == ""){
+            return;
+        }
+        let newTodo = new Todo(inputText.value, index);
+        todolist = [...todolist, newTodo];
+        index += 1;
+        inputText.value = "";
+    }
     
     // make remove Todo function that takes an index
     // and splices the array at that index
+    function removeTodo(index: number){
+        todolist.splice(index, 1);
+        todolist = [...todolist];
+    }
     
 </script>
-
 
 <div class="newtodo">
     <input type="text" id="newtodotext" name="paragraph_text" placeholder="Do homework...">
     <hr>
-    <button id="newtodosubmit" onclick={}><!-- call add Todo -->+</button>
+    <button id="newtodosubmit" onclick={() => addTodo()}><!-- call add Todo -->+</button>
 </div>
 
 <div class="header">
     <h1>To Do:</h1>
 </div>
 
-{#each _ as todo}<!-- use todo array -->
+{#each todolist as todo}<!-- use todo array -->
     <div class="todo">
         <section>
-            <h2>{}<!-- get title --></h2>
-            <h4>ID: {}<!-- get index --></h4>
+            <h2>{todo.getTitle()}<!-- get title --></h2>
+            <h4>ID: {todo.getIndex()}<!-- get index --></h4>
         </section>
-        <button id="todoremove" onclick={}><!-- call remove Todo using index -->X</button>
+        <button id="todoremove" onclick={() => removeTodo(todo.getIndex())}><!-- call remove Todo using index -->X</button>
     </div>
 {/each}
 
