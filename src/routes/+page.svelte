@@ -41,10 +41,10 @@
 {#each todolist as todo}<!-- use todo array -->
     <div class="todo">
         <section>
-            <h2>{todo.getTitle()}<!-- get title --></h2>
-            <h4>ID: {todo.getIndex()}<!-- get index --></h4>
+            <h2>{todo.get_title()}<!-- get title --></h2>
+            <h4>ID: {todo.get_index()}<!-- get index --></h4>
         </section>
-        <button id="todoremove" onclick={() => removeTodo(todo.getIndex())}><!-- call remove Todo using index -->X</button>
+        <button id="todoremove" onclick={() => removeTodo(todo.get_index())}><!-- call remove Todo using index -->X</button>
     </div>
 {/each}
 
